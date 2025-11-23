@@ -1,0 +1,99 @@
+services:
+
+  clientes-api:
+    container_name: clientes-api
+    image: clientes-api
+    build:
+      context: ./clientes-api/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - clientes-api-network
+    depends_on:
+      - postgres
+      - rabbit
+
+  frontend:
+    container_name: clientes-frontend
+    image: clientes-frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - clientes-api-network
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - clientes-api
+
+  mail-sender:
+    container_name: mail-sender
+    image: mail-sender
+    build:
+      context: ./mail-sender/
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_MAIL_HOST=mailhog
+      - SPRING_MAIL_PORT=1025
+      - SPRING_MAIL_USERNAME=""
+      - SPRING_MAIL_PASSWORD=""
+      - SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH="false"
+      - SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE="false"
+    networks:
+      - clientes-api-network
+    depends_on:
+      - rabbit
+      - mailhog
+
+  postgres:
+    container_name: postgres
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=clientes
+    networks:
+      - clientes-api-network
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=postgres
+    ports:
+      - "8081:8080"
+    networks:
+      - clientes-api-network
+    depends_on:
+      - postgres
+
+  rabbit:
+    container_name: rabbit
+    image: rabbitmq:4-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=rabbit
+    networks:
+      - clientes-api-network
+
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - clientes-api-network
+
+networks:
+  clientes-api-network:
+    driver: bridge
