@@ -31,10 +31,11 @@ implementa a parte principal do projeto, a
 API de cadastro de clientes.
 
    - A API deste container pode ser acessada
-em [http://localhost:8080/api/clientes]()
+em 
+[http://localhost:8080/api/clientes](http://localhost:8080/api/clientes)
    - A interface web do `Swagger` para esta 
 API pode ser acessada em 
-[http://localhost:8080/swagger-ui/index.html]()
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 2. Container do `Postgres`, banco de dados
 utilizado pela API para a persistência dos
@@ -45,8 +46,9 @@ para visualização dos dados armazenados no
 banco de dados do `Postgres`.
 
     - A interface do `Adminer` pode ser
-acessada em [http://localhost:8081/](), com
-os dados:
+acessada em 
+[http://localhost:8081/](http://localhost:8081/),
+com os dados:
       - Sistema: `PostgreSQL`
       - Servidor: `postgres`
       - Usuário: `postgres`
@@ -63,8 +65,8 @@ o componente `clientes-api` e o componente
 `mail-sender`.
 
     - A interface web do `RabbitMQ` pode ser
-acessada em [http://localhost:15672/](), com
-os dados:
+acessada em [http://localhost:15672/](http://localhost:15672/), 
+com os dados:
       - Username: `rabbit`
       - Password: `rabbit`
 
@@ -73,7 +75,8 @@ utilizado pelo componente `mail-sender` para
 gerenciar o envio dos e-mails
 
     - A interface web do `MailHog` pode ser
-acessada em [http://localhost:8025/]()
+acessada em 
+[http://localhost:8025/](http://localhost:8025/)
 
 7. Container do componente `frontend`, parte
 do projeto que implementa uma interface web
@@ -83,4 +86,4 @@ para acesso à API do componente
     - O componente `frontend` foi 
 desenvolvido com `Angular` e `Bootstrap`
     - O `frontend` pode ser acessado em 
-[http://localhost:4200/]()
+[http://localhost:4200/](http://localhost:4200/)
