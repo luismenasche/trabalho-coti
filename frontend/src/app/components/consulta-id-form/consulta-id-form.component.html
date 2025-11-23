@@ -1,0 +1,33 @@
+<div class="container my-4">
+  <form class="rounded p-3" [formGroup]="form" (ngSubmit)="consultar()">
+    <div class="idCliente">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="id"
+        placeholder="Id do Cliente"
+        [ngClass]="{ 'is-invalid': isInvalid('id') }"
+      />
+
+      <div class="invalid-feedback" *ngIf="form.controls['id'].errors">
+        <div *ngIf="form.controls['id'].errors['required']">
+          O Id é obrigatório.
+        </div>
+        <div *ngIf="form.controls['id'].errors['pattern']">
+          O Id deve estar no formato de UUID válido
+          (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-primary w-100" [disabled]="form.invalid">
+        Consultar
+      </button>
+    </div>
+
+    <div>
+      <button type="reset" class="btn btn-dark w-100">Limpar</button>
+    </div>
+  </form>
+</div>

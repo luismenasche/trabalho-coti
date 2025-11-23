@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <div class="dados-box border rounded shadow-sm">
+    <div class="linha d-flex rounded align-items-center head">
+      <div class="campo flex-grow-1">
+        <strong>Nome:</strong> {{ cliente().nome }}
+      </div>
+
+      <div class="ms-auto d-flex gap-2">
+        <button class="btn btn-primary" (click)="atualizar()">Atualizar</button>
+        <button class="btn btn-danger" (click)="excluir()">Excluir</button>
+      </div>
+    </div>
+
+    <div class="linha d-flex justify-content-between">
+      <div class="campo"><strong>ID:</strong> {{ cliente().id }}</div>
+    </div>
+
+    <div class="linha d-flex justify-content-between">
+      <div class="campo"><strong>Email:</strong> {{ cliente().email }}</div>
+
+      <div class="campo">
+        <strong>Data de Nascimento:</strong> {{ cliente().dataNascimento }}
+      </div>
+
+      <div class="campo"><strong>CPF:</strong> {{ cliente().cpf }}</div>
+    </div>
+
+    <div class="linha d-flex justify-content-between">
+      <div class="campo">
+        <strong>Logradouro:</strong> {{ cliente().enderecos[0].logradouro }}
+      </div>
+
+      <div class="campo">
+        <strong>Número:</strong> {{ cliente().enderecos[0].numero }}
+      </div>
+
+      <div class="campo">
+        <strong>Complemento:</strong> {{ cliente().enderecos[0].complemento }}
+      </div>
+    </div>
+
+    <div class="linha d-flex justify-content-between">
+      <div class="campo">
+        <strong>Bairro:</strong> {{ cliente().enderecos[0].bairro }}
+      </div>
+
+      <div class="campo">
+        <strong>Cidade:</strong>
+        {{ cliente().enderecos[0].cidade }} &nbsp;&nbsp;
+        <strong>UF:</strong>
+        {{ cliente().enderecos[0].uf }}
+      </div>
+
+      <div class="campo">
+        <strong>CEP:</strong> {{ cliente().enderecos[0].cep }}
+      </div>
+    </div>
+  </div>
+</div>

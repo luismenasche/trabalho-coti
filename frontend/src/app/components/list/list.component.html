@@ -1,0 +1,11 @@
+<h1>Lista de Clientes Cadastrados</h1>
+
+<ul>
+  @for (cliente of clientes; track cliente.id) {
+  <li>
+    <app-client-view [cliente]="cliente" (afterDelete)="afterDelete($index)" />
+  </li>
+  }
+</ul>
+
+<app-btn-voltar />

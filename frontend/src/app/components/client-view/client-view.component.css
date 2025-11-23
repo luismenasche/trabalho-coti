@@ -1,0 +1,33 @@
+.dados-box {
+  border: 1px solid #ccc;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.head {
+  background-color: lightgray;
+}
+
+.linha {
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+.campo {
+  padding: 4px 8px;
+}
+
+.linha button {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .linha {
+    flex-direction: column;
+  }
+
+  .linha .ms-auto {
+    margin-left: 0 !important;
+    margin-top: 10px;
+  }
+}

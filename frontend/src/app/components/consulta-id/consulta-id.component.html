@@ -1,0 +1,6 @@
+<h1>Consulta por Id</h1>
+<app-consulta-id-form (onSubmit)="consulta($event)" />
+@if (cliente) {
+<app-client-view [cliente]="cliente" (afterDelete)="afterDelete()" />
+}
+<app-btn-voltar />

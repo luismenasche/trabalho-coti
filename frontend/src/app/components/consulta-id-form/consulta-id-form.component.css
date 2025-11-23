@@ -1,0 +1,11 @@
+form {
+  border: 3px double black;
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.idCliente {
+  flex-grow: 1;
+}

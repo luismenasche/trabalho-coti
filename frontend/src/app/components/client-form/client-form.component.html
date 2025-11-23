@@ -1,0 +1,145 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card shadow p-4" style="width: 800px">
+    <h3 class="text-center mb-4">Cadastro de Clientes</h3>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="nome"
+          [ngClass]="{ 'is-invalid': isInvalid('nome') }"
+        />
+
+        <div *ngIf="isInvalid('nome')" class="text-danger">
+          <small *ngIf="form.get('nome')?.errors?.['required']">
+            O nome é obrigatório.
+          </small>
+          <small *ngIf="form.get('nome')?.errors?.['minlength']">
+            O nome deve ter no mínimo 8 caracteres.
+          </small>
+          <small *ngIf="form.get('nome')?.errors?.['maxlength']">
+            O nome deve ter no máximo 100 caracteres.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': isInvalid('email') }"
+        />
+        <div *ngIf="isInvalid('email')" class="text-danger">
+          <small *ngIf="form.get('email')?.errors?.['required']"
+            >O email é obrigatório.</small
+          >
+          <small *ngIf="form.get('email')?.errors?.['email']"
+            >Formato de email inválido.</small
+          >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">CPF</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="cpf"
+          [ngClass]="{ 'is-invalid': isInvalid('cpf') }"
+        />
+        <div *ngIf="isInvalid('cpf')" class="text-danger">
+          <small *ngIf="form.get('cpf')?.errors?.['required']"
+            >O CPF é obrigatório.</small
+          >
+          <small *ngIf="form.get('cpf')?.errors?.['pattern']"
+            >O CPF deve conter 11 dígitos numéricos.</small
+          >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Data de Nascimento</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="dataNascimento"
+          [ngClass]="{ 'is-invalid': isInvalid('dataNascimento') }"
+        />
+        <div *ngIf="isInvalid('dataNascimento')" class="text-danger">
+          <small>A data de nascimento é obrigatória.</small>
+        </div>
+      </div>
+
+      <fieldset class="border p-3 mb-3">
+        <legend class="float-none w-auto px-2">Endereço</legend>
+
+        <div class="mb-3">
+          <label class="form-label">Logradouro</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="logradouro"
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Número</label>
+            <input type="text" class="form-control" formControlName="numero" />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Complemento</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="complemento"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Bairro</label>
+          <input type="text" class="form-control" formControlName="bairro" />
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 mb-3">
+            <label class="form-label">Cidade</label>
+            <input type="text" class="form-control" formControlName="cidade" />
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">UF</label>
+            <input type="text" class="form-control" formControlName="uf" />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">CEP</label>
+          <input type="text" class="form-control" formControlName="cep" />
+        </div>
+      </fieldset>
+
+      <div class="d-flex gap-2">
+        <button
+          class="btn btn-primary w-100"
+          type="submit"
+          [disabled]="form.invalid || form.untouched"
+        >
+          {{ tituloBotao1 }}
+        </button>
+
+        <!-- Botão Reset -->
+        <button class="btn btn-dark w-100" type="button" (click)="onClean()">
+          {{ tituloBotao2 }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-btn-voltar />
